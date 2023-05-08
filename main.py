@@ -1,5 +1,8 @@
 import json
 import os
+
+import binance
+
 import binance_connect
 from dotenv import load_dotenv
 
@@ -28,10 +31,19 @@ if __name__ =="__main__":
     secret_key=BINANCE_SECRET_KEY
 
     status = binance_connect.query_binance_status(api_key, secret_key)
-    print(status)
+    print("Status: ",status)
 
     account = binance_connect.query_account(api_key, secret_key)
-    print(account)
+    print("Account: ", account)
 
     testnet= binance_connect.query_testnet(api_key, secret_key)
-    print(testnet)
+
+    candles=binance_connect.get_candlestick_data("ETHBTC", "1h", 3)
+    print(candles)
+
+    dataframe= binance_connect.query_quote_asset_list("BTC")
+    print("DataFrame: ", dataframe)
+
+
+
+
