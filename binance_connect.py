@@ -19,8 +19,8 @@ def query_binance_status(api_key, secret_key):
 def query_account(api_key, api_secret):
     # client = Client(api_key, secret_key)
     # status = client.get_account_status()
-    print("APIKEY: ", api_key)
-    print("SecretKEY: ", api_secret)
+    # print("APIKEY: ", api_key)
+    # print("SecretKEY: ", api_secret)
 
     # client = Client(api_key, api_secret)
     client = Client(api_key=api_key, api_secret=api_secret, testnet=True)
@@ -40,7 +40,7 @@ def get_candlestick_data(symbol, timeframe, qty ):
     for candle in raw_data:
         converted_candle={
             "time": candle[0],
-            "opem": float(candle[1]),
+            "open": float(candle[1]),
             "high": float(candle[2]),
             "low": float(candle[3]),
             "close": float(candle[4]),
