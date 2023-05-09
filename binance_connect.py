@@ -103,3 +103,113 @@ def query_open_trades():
         secret_key=secret_key,
         base_url="https://testnet.binance.vsion",
     )
+
+    #get Trades
+    try:
+        response=client.get_open_orders()
+        return response
+    except ConnectionRefusedError as error:
+        print("Error: ",error)
+
+# Function to cancel a trade
+def cancel_prder_by_symbol(symbol ):
+    #set de API keys
+    api_key=BINANCE_API_KEY
+    secret_key=BINANCE_SECRET_KEY
+
+    #Create client
+    client = Spot(
+        api_key=api_key,
+        secret_key=secret_key,
+        base_url="https://testnet.binance.vsion",
+    )
+    #cancel trades
+    try:
+        response=client.cancel_open_orders(symbol=symbol)
+        return response
+    except ConnectionRefusedError as error:
+        print("Error: ",error)
+
+
+# Function to palce a limit order for symbol
+def place_limit_order(symbol, side, quantity, price):
+    # Set the API Key
+    api_key = BINANCE_API_KEY
+    # Set the secret key
+    secret_key = BINANCE_SECRET_KEY
+    # Setup the client
+    client = Spot(
+        key=api_key, secret=secret_key, base_url="https://testnet.binance.vision"
+    )
+
+    # Place the limit order
+    try:
+        response = client.new_order(
+            symbol=symbol,
+            side=side,
+            type="LIMIT",
+            timeInForce="GTC",
+            quantity=quantity,
+            price=price,
+        )
+        return response
+    except ConnectionRefusedError as error:
+        print(f"Found error {error}")
+
+
+def place_stop_loss_order(
+    symbol, side, quantity, stop_price, limit_price
+):
+    # Set the API Key
+    api_key = BINANCE_API_KEY
+    # Set the secret key
+    secret_key = BINANCE_SECRET_KEY
+    # Setup the client
+    client = Spot(
+        key=api_key, secret=secret_key, base_url="https://testnet.binance.vision"
+    )
+
+    # Place the stop loss order
+    try:
+        response = client.new_order(
+            symbol=symbol,
+            side=side,
+            type="STOP_LOSS_LIMIT",
+            timeInForce="GTC",
+            quantity=quantity,
+            stopPrice=stop_price,
+            price=limit_price,
+        )
+        return response
+    except ConnectionRefusedError as error:
+        print(f"Found error {error}")
+
+
+def place_take_profit_order(
+    symbol, side, quantity, stop_price, limit_price
+):
+    # Set the API Key
+    api_key = BINANCE_API_KEY
+    # Set the secret key
+    secret_key = BINANCE_SECRET_KEY
+    # Setup the client
+    client = Spot(
+        key=api_key, secret=secret_key, base_url="https://testnet.binance.vision"
+    )
+
+    # Place the take profit order
+    try:
+        response = client.new_order(
+            symbol=symbol,
+            side=side,
+            type="TAKE_PROFIT_LIMIT",
+            timeInForce="GTC",
+            quantity=quantity,
+            stopPrice=stop_price,
+            price=limit_price,
+        )
+        return response
+    except ConnectionRefusedError as error:
+        print(f"Found error {error}")
+
+

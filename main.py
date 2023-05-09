@@ -30,19 +30,19 @@ if __name__ =="__main__":
     api_key=BINANCE_API_KEY
     secret_key=BINANCE_SECRET_KEY
 
-    status = binance_connect.query_binance_status(api_key, secret_key)
-    print("Status: ",status)
+    # status = binance_connect.query_binance_status(api_key, secret_key)
+    # print("Status: ",status)
 
     account = binance_connect.query_account(api_key, secret_key)
-    print("Account: ", account)
-
-    testnet= binance_connect.query_testnet(api_key, secret_key)
-
-    candles=binance_connect.get_candlestick_data("ETHBTC", "1h", 3)
-    print(candles)
-
-    dataframe= binance_connect.query_quote_asset_list("BTC")
-    print("DataFrame: ", dataframe)
+    # print("Account: ", account)
+    #
+    # testnet= binance_connect.query_testnet(api_key, secret_key)
+    #
+    # candles=binance_connect.get_candlestick_data("ETHBTC", "1h", 3)
+    # print(candles)
+    #
+    # dataframe= binance_connect.query_quote_asset_list("BTC")
+    # print("DataFrame: ", dataframe)
 
 
 
