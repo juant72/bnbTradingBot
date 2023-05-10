@@ -1,8 +1,13 @@
 from binance.spot import Spot
 from binance.client import Client
 import pandas
+import os
+from dotenv import load_dotenv
+# from exebot import BINANCE_API_KEY, BINANCE_SECRET_KEY
+load_dotenv()
 
-from main import BINANCE_API_KEY, BINANCE_SECRET_KEY
+BINANCE_API_KEY = os.getenv('BINANCE_API_KEY')
+BINANCE_SECRET_KEY = os.getenv('BINANCE_SECRET_KEY')
 
 
 # Function to get the status
